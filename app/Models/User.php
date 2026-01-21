@@ -46,4 +46,10 @@ class User extends Authenticatable
         'password' => 'hashed',
         'color_preferences' => 'array',
     ];
+
+    public function clothingItems()
+    {
+        return $this->hasMany(ClothingItem::class);
+    }
+
 }
