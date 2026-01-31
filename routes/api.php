@@ -33,3 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/wardrobe', [ClothingItemController::class, 'index']); // nova ruta za prikaz ormara
     Route::delete('/wardrobe/{id}', [ClothingItemController::class, 'destroy']);
 });
+use App\Http\Controllers\OutfitController;
+
+Route::get('/outfit/suggest', [OutfitController::class, 'suggest'])
+    ->middleware('auth:sanctum');
