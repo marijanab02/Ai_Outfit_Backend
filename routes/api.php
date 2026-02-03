@@ -37,3 +37,11 @@ use App\Http\Controllers\OutfitController;
 
 Route::get('/outfit/suggest', [OutfitController::class, 'suggest'])
     ->middleware('auth:sanctum');
+
+Route::middleware('auth:sanctum')->post(
+    '/outfit/select',
+    [OutfitController::class, 'store']
+);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/outfits', [OutfitController::class, 'index']);
+});
