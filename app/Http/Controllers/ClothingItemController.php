@@ -35,7 +35,7 @@ class ClothingItemController extends Controller
 
         $path = $request->file('image')->store('clothes', 'public');
 
-        // 2️⃣ pošalji AI servisu
+        // pošalji AI servisu
         $response = Http::attach(
             'file',
             Storage::disk('public')->get($path),
@@ -46,7 +46,7 @@ class ClothingItemController extends Controller
         if (!isset($ai['category']['category'], $ai['color']['hex'])) {
             return response()->json(['error' => 'AI servis vratio neispravan format'], 500);
         }
-        // 3️⃣ spremi u bazu
+        // spremi u bazu
         $item = ClothingItem::create([
             'user_id' => auth()->id(),
             'name' => $request->name,

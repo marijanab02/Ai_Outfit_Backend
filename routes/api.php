@@ -45,3 +45,9 @@ Route::middleware('auth:sanctum')->post(
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/outfits', [OutfitController::class, 'index']);
 });
+use App\Http\Controllers\UserController;
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::patch('/users/{user}', [UserController::class, 'update']);
+});
+Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
